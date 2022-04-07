@@ -5,7 +5,7 @@ class NewsModel{
   late String title;
   late String description;
   late bool isFavourite;
-  NewsModel({required this.id,required this.title,required this.description,required this.isFavourite});
+  NewsModel({required this.title,required this.description,required this.isFavourite});
   NewsModel.fromMap(Map<String,dynamic> map){
   id = map[SqlRepo.newsIdColumnName];
   title = map[SqlRepo.newsTitleColumnName];
