@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/nerws_model.dart';
 import 'package:news_app/repositories/sql_repo.dart';
-// اسامة مش مركز بعد الامتحانات
+
 class NewsProvider extends ChangeNotifier {
   NewsProvider() {
     SqlRepo.sqlRepo.initDatabase();
   }
   List<NewsModel> allNews = [];
   List<NewsModel> favouriteNews = [];
-  bool isFavourite=false;
+  bool isFavourite = false;
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  getAllNews() {
+  getAllNews() async {
+    allNews = await SqlRepo.sqlRepo.getAllNews();
+    notifyListeners();
   }
+
   addNewToDatabase() {}
   addNewToFavourite() {}
   deleteNewsFromDatabase() {}
