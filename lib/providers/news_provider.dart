@@ -6,6 +6,7 @@ import 'package:news_app/repositories/sql_repo.dart';
 class NewsProvider extends ChangeNotifier {
   NewsProvider() {
     SqlRepo.sqlRepo.initDatabase();
+     getAllNews();
   }
   List<NewsModel> allNews = [];
   List<NewsModel> favouriteNews = [];

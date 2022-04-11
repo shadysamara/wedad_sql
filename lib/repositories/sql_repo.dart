@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:news_app/models/nerws_model.dart';
@@ -20,10 +21,12 @@ class SqlRepo {
       db.execute(
           'CREATE TABLE $tableName ($newsIdColumnName INTEGER PRIMARY KEY AUTOINCREMENT, $newsTitleColumnName TEXT,  $newsDescriptionColumnName TEXT,$newsIsFavouriteColumnName INTEGER)');
     });
+   
   }
 
-  addNew(NewsModel newsModel) {
-    database!.insert(tableName, newsModel.toMap());
+  addNew(NewsModel newsModel) async {
+    int rowIndex = await database!.insert(tableName, newsModel.toMap());
+    log(rowIndex.toString());
   }
 
   Future<List<NewsModel>> getAllNews() async {
